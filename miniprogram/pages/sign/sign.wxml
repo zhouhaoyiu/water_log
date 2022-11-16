@@ -1,0 +1,233 @@
+<wxs module="_">
+    module.exports.contains = function (arr, target) { return arr.indexOf(target) > -1; } 
+</wxs>
+<scroll-view class="page">
+    <t-cell title="供水人" hover note="太原供水集团有限公司" />
+    <t-cell title="联系电话" hover note="0351-3094444" />
+    <t-input disabled="{{searchOk}}" align="right" size="small" value="{{jfh}}" data-inputfield="jfh" label="slot" onchange="setInputData" placeholder="请输入缴费号">
+        <text slot="label">缴费号<text style="color: #e34d59"> *</text></text>
+    </t-input>
+    <view style="margin-top:6rpx;margin-bottom:20rpx;">
+        <t-button wx:if="{{!searchOk}}" style="width: 80%;" bindtap="searchInfo" theme="primary" block content="查询"></t-button>
+        <t-button wx:else style="width: 80%;" bindtap="reSearch" theme="primary" block content="重新查询"></t-button>
+    </view>
+    <t-cell title="用水人" hover note="{{mc}}" />
+    <t-cell title="用户号" hover note="{{cbh}}" />
+    <t-input align="right" disabled="{{!!status}}" size="small" value="{{lxdh}}" data-inputfield="lxdh" label="slot" onchange="setInputData" placeholder="请输入联系电话">
+        <text slot="label">联系电话<text style="color: #e34d59"> *</text></text>
+    </t-input>
+    <t-input align="right" disabled="{{!!status}}" size="small" value="{{sfzh}}" data-inputfield="sfzh" label="slot" onchange="setInputData" placeholder="请输入证件号">
+        <text slot="label">证件号<text style="color: #e34d59"> *</text></text>
+    </t-input>
+    <t-cell title="状态" hover note="{{!!status?'已签订':'未签订'}}" />
+    <t-cell description="为了明确供水人和用水人的权利和义务，根据《中华人民共和国民法典》、《城市供水条例》及《太原市城市供水管理办法》等有关法律、法规和规章，经双方协商，订立本合同，以便共同遵守。" />
+    <t-collapse value="{{activeValues}}" bind:change="handleChange">
+        <t-collapse-panel header="第一条 用水地址和用水性质" header-right-content="{{_.contains(activeValues, 0) ? '收起' : '展开'}}" value="{{0}}" expandIcon>
+            <view class="padding:10rpx">
+                <view>
+                    (一) 用水地址为
+                    <text style="font-weight: bold;color: #2b5cab;">
+                        {{dz}}
+                    </text>
+                </view>
+                <view>
+                    (二) 用水性质为
+                    <text style="font-weight: bold;color: #2b5cab;">
+                        居民一
+                    </text>
+                </view>
+                <view>
+                    (三) 贸易结算水表安装地点为
+                    <text style="font-weight: bold;color: #2b5cab;">
+                        {{dz}}
+                    </text>
+                </view>
+            </view>
+        </t-collapse-panel>
+        <t-collapse-panel header="第二条  供水质量和方式" header-right-content="{{_.contains(activeValues, 1) ? '收起' : '展开'}}" value="{{1}}" expandIcon>
+            <view>
+                <view>
+                    1.供水人保证用水人的生活饮用水压力符合国家标准。
+                </view>
+                <view>
+                    2.供水人保证用水人的生活饮用水水质符合国家《生活饮用水卫生标准》。
+                </view>
+                <view>
+                    3.供水人通过城市公共供水管网及附属设施向用水人提供不间断供水（欠费停水、事故停水、计划停水及有特殊约定的除外。
+                </view>
+            </view>
+        </t-collapse-panel>
+        <t-collapse-panel header="第三条  水费结算" header-right-content="{{_.contains(activeValues, 2) ? '收起' : '展开'}}" value="{{2}}" expandIcon>
+            <view>
+                <view>
+                    1. 双方按照贸易结算水表计量的水量作为水费结算的依据。供水人按照政府价格主管部门的规定，对城市居民生活用水按照“阶梯式”计量水价的相关标准收取水费。
+                </view>
+                <view>
+                    2.供水人按照规定周期抄表并结算水费，用水人应在接到交费通知单之日起8日内交清水费。
+                </view>
+                <view>
+                    3.贸易结算水表因自然损坏造成表停、表坏、不能抄表时，供水人应当更换安装新的贸易结算水表。因用水人原因造成贸易结算水表丢失、损坏、不能抄表时，供水人可另行安装新的贸易结算水表，相关费用包含水表费用由用水人负担。从上期抄表日至更换安装新贸易结算水表日止的水费，供水人可按新装贸易结算水表平均日用水量计收。用水人有特殊原因的，供水人应与用水人协商处理。
+                </view>
+            </view>
+        </t-collapse-panel>
+        <t-collapse-panel header="第四条  供水设施资产划分及维护管理" header-right-content="{{_.contains(activeValues, 3) ? '收起' : '展开'}}" value="{{3}}" expandIcon>
+            <view>
+                <view>
+                    1. 供、用水人双方产权划分以贸易结算水表为界，即贸易结算水表（含）背向用户的设施，归供水人所有；贸易结算水表朝向用户的设施，归用水人所有。
+                </view>
+                <view>
+                    2.供水设施的管理和维修，随产权归属划分，即产权所有者负责。对表井（间）内的设施（水表除外），发生损坏，由用水人出资，供水人派人修理。
+                </view>
+                <view>
+                    3.不同用水人共用同一水表井（间）的，其产权维护管理及相关责任由用水人共同负责。
+                </view>
+                <view>
+                    4.对属于用水人产权范围供水设施的新建管线、户表工程验收交付使用后，在国家规定的保修期限内，属施工质量问题，由施工单位负责维修；属用水人使用造成损坏或超过规定保修期限的，由用水人自行维修或委托供水人进行维修，供水人按照规定合理收取费用。
+                </view>
+                <view>
+                    5.对产权范围供水设施发生跑、冒、滴、漏水时，需立即采取停水措施，并按产权归属尽快修复。水量损失及由此造成的第三方财产损失由产权所有者负责。
+                </view>
+            </view>
+        </t-collapse-panel>
+        <t-collapse-panel header="第五条  供水人的权利和义务" header-right-content="{{_.contains(activeValues, 4) ? '收起' : '展开'}}" value="{{4}}" expandIcon>
+            <view>
+                <view>
+                    1.保证按照合同的约定向用水人安全供水。
+                </view>
+                <view>
+                    2.监督用水人按照合同约定的用水性质用水。
+                </view>
+                <view>
+                    3.按照国家标准、规范做好抄表和更换贸易结算水表等工作。
+                </view>
+                <view>
+                    4.用水人逾期未交纳水费，供水人有权采取限制用水措施，直至停止供水。
+                </view>
+                <view>
+                    5.用水人对贸易结算水表准确度有异议的，可向供水人提出校表申请。供水人自接到申请15日内，应将争议水表送交法定的水表鉴定部门校验。校验合格，用水人应承担校验费并按原计量数交纳水费；校验不合格，校验费和超出国家规定的误差标准的水费由供水人承担。
+                </view>
+                <view>
+                    6.供水人遇到紧急情况或需要告知所有用水人有关信息时，可以采取张贴通告或新闻媒体发布公告通知。
+                </view>
+            </view>
+        </t-collapse-panel>
+        <t-collapse-panel header="第六条  用水人的权利和义务" header-right-content="{{_.contains(activeValues, 5) ? '收起' : '展开'}}" value="{{5}}" expandIcon>
+            <view>
+                <view>
+                    1.保证按照合同的约定安全用水。
+                </view>
+                <view>
+                    2.监督供水人按照合同约定的水质、水量、水压供水。
+                </view>
+                <view>
+                    3.有权向供水人收缴的水费、供水设施维修收费申请复核。
+                </view>
+                <view>
+                    4.配合供水人抄验和更换贸易结算水表等工作。
+                </view>
+                <view>
+                    5.按照合同约定按期向供水人交纳水费。
+                </view>
+                <view>
+                    6.用水人产权范围内供水设施出现故障，由其自行维修并负担相应费用；如用水人委托供水人进行维修的，用水人应向供水人支付维修费用。
+                </view>
+                <view>
+                    7.用水人有保护贸易结算水表的义务，如发现贸易结算水表出现损毁或故障时，用水人应当立即告知供水人。
+                </view>
+                <view>
+                    8.用户贸易结算水表安装在楼梯间、地下室或水表井内的，用水人不得占用水表间或水表井。因用水人私自占用造成损失的，相关责任由用水人自行承担。
+                </view>
+                <view>
+                    9.用水人未经供水人同意，不得擅自向他人转供水。
+                </view>
+            </view>
+        </t-collapse-panel>
+        <t-collapse-panel header="第七条  违约责任" header-right-content="{{_.contains(activeValues, 6) ? '收起' : '展开'}}" value="{{6}}" expandIcon>
+            <view>
+                （一）供水人违约责任
+                <view>
+                    1.供水人违反约定未向用水人供水的，应当支付用水人停水期间正常用水量水费5%的违约金。
+                </view>
+                <view>
+                    2.供水人因责任事故造成停水以及水质、水压达不到合同要求，给用水人造成损失的，供水人应当承担赔偿责任。赔偿额为责任期间正常用水量水费的5%。
+                </view>
+            </view>
+            <view>
+                （二）用水人违约责任
+                <view>
+                    1.用水人有违反合同约定擅自改变用水性质、向其他用水人转供水行为的，除补交供水人水费损失外，还应当支付正常供水量水费30%的违约金。
+                </view>
+                <view>
+                    2.用水人逾期未足额交纳水费的，供水人有权中止供水并以未缴纳部分为基数按日收取5%违约金。停水前供水人填写欠费通知单并提前3日通知用水人。用水人交齐水费、污水费、违约金等相关费用后，供水人应当于24小时内恢复供水。
+                </view>
+            </view>
+        </t-collapse-panel>
+        <t-collapse-panel header="第八条  争议的解决方式" header-right-content="{{_.contains(activeValues, 7) ? '收起' : '展开'}}" value="{{7}}" expandIcon>
+            <view>
+                本合同在履行过程中发生争议时，由当事人双方协商解决，也可通过城市公共供水行业主管部门调解解决。协商或者调解不成，可向供水人所在地有管辖权的人民法院提起诉讼。
+            </view>
+        </t-collapse-panel>
+        <t-collapse-panel header="第九条  合同的变更" header-right-content="{{_.contains(activeValues, 8) ? '收起' : '展开'}}" value="{{8}}" expandIcon>
+            <view>
+                <view>
+                    当事人如发生变化，双方应重新签订合同。
+                </view>
+                <view>
+                    合同未尽事宜，双方可协商签订补充协议，补充协议与本合同具有同等效力。
+                </view>
+            </view>
+        </t-collapse-panel>
+        <t-collapse-panel header="第十条  其他约定" header-right-content="{{_.contains(activeValues, 9) ? '收起' : '展开'}}" value="{{9}}" expandIcon>
+        </t-collapse-panel>
+        <t-collapse-panel header="第十一条 合同生效期限" header-right-content="{{_.contains(activeValues, 10) ? '收起' : '展开'}}" value="{{10}}" expandIcon>
+            <view>
+                本合同自双方签章之日起生效。
+            </view>
+        </t-collapse-panel>
+    </t-collapse>
+    <view class="title">
+        供水人签章
+    </view>
+    <view style="display: flex;justify-content: space-around;margin-top: 12rpx;padding: 12rpx 0;background-color: white;border-radius: 12rpx;">
+        <view style="display: flex;flex-direction: column;justify-content: center;align-items: center;">
+            <t-image t-class="external-class" src="../../image/ht.png" mode="scaleToFill" shape="round" bindtap="{{undefined}}"></t-image>
+            <view style="font-size: 32rpx;color: black;font-weight: normal;">
+                合同章
+            </view>
+        </view>
+        <view style="display: flex;flex-direction: column;justify-content: center;align-items: center;">
+            <t-image t-class="external-class" src="../../image/fr.png" mode="scaleToFill" shape="round" bindtap="{{undefined}}"></t-image>
+            <view style="font-size: 32rpx;color: black;font-weight: normal;">
+                法人章
+            </view>
+        </view>
+    </view>
+    <view class="title">
+        用水人签章
+    </view>
+    <view style="background:white;margin-top: 20rpx;">
+        <view catchtouchmove="{{undefined}}" style="display: flex;justify-content: center;align-items: center;">
+            <canvas style="width: 100%;height: 250px;display:{{ysrDrawShow?'block':'none'}};" class="ysrSign" data-name="ysr" type="2d" disable-scroll="true" bindtouchstart="touchstart" bindtouchmove="touchmove" bindtouchend="udf" canvas-id="ysrSign"></canvas>
+        </view>
+        <view wx:if="{{ysrDrawShow}}" style="display: flex;justify-content: space-between;padding: 0 20rpx;">
+            <t-button data-name="ysr" theme="danger" variant="outline" block size="small" bindtap="resign">
+                重新签字
+            </t-button>
+            <t-button data-name="ysr" theme="primary" variant="outline" block size="small" bindtap="signOk">
+                完成签字
+            </t-button>
+        </view>
+        <image wx:if="{{ysrBase64}}" src="data:image/jpeg;base64,{{ysrBase64}}" mode="" />
+        <view>
+            <t-button wx:if="{{!ysrDrawShow && !status}}" data-name="ysr" theme="primary" variant="outline" block size="small" bindtap="openSign">
+                {{!ysrDrawOk?"开始签字":"重新签字"}}
+            </t-button>
+        </view>
+    </view>
+    <view wx:if="{{!status}}" style="margin-top:20rpx">
+        <!-- <t-button>暂存</t-button> -->
+        <t-button block theme="primary" bindtap="submitJob">提交</t-button>
+    </view>
+</scroll-view>
+
+<t-toast id="t-toast" />

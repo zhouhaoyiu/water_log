@@ -1,0 +1,11 @@
+{
+    "usingComponents": {
+        "t-input": "tdesign-miniprogram/input/input",
+        "t-cell": "tdesign-miniprogram/cell/cell",
+        "t-button": "tdesign-miniprogram/button/button",
+        "t-collapse": "tdesign-miniprogram/collapse/collapse",
+        "t-collapse-panel": "tdesign-miniprogram/collapse/collapse-panel",
+        "t-toast": "tdesign-miniprogram/toast/toast",
+        "t-image": "tdesign-miniprogram/image/image"
+    }
+}

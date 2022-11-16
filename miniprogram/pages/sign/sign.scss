@@ -1,0 +1,29 @@
+/* pages/sign/sign.wxss */
+canvas {
+    display: flex;
+    justify-content: center;
+    border: 1px solid rgba(202, 202, 202, 0.164);
+    border-radius: 10rpx;
+    margin-bottom: 10rpx;
+    background: white;
+}
+.page {
+    padding: 16rpx;
+    padding-bottom: 118px;
+    box-sizing: border-box;
+    height: max-content;
+    background: #e9e9e960;
+
+    .title {
+        font-size: 60rpx;
+        font-weight: bold;
+        color: rgb(153, 153, 153);
+        padding-left: 30rpx;
+        padding-top: 20rpx;
+    }
+
+    .external-class {
+        width: 144px;
+        height: 144px;
+    }
+}

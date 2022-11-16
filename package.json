@@ -1,0 +1,17 @@
+{
+    "name": "tsht",
+    "version": "1.0.0",
+    "description": "",
+    "scripts": {},
+    "keywords": [],
+    "author": "",
+    "license": "",
+    "dependencies": {
+        "dayjs": "^1.11.6",
+        "nanoid": "^4.0.0",
+        "tdesign-miniprogram": "^0.26.0"
+    },
+    "devDependencies": {
+        "miniprogram-api-typings": "3.6.0"
+    }
+}

@@ -1,0 +1,29 @@
+{
+  "pages": [
+    "pages/sign/sign",
+    "pages/test/test",
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#2b5cab",
+    "navigationBarTitleText": "供水合同签订",
+    "navigationBarTextStyle": "white"
+  },
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "custom": true,
+    "color": "#000000",
+    "selectedColor": "#000000",
+    "backgroundColor": "#ffffff",
+    "list": [{
+      "pagePath": "pages/sign/sign",
+      "text": "组件"
+    }, {
+      "pagePath": "pages/test/test",
+      "text": "接口"
+    }]
+  },
+  "usingComponents": {}
+}
