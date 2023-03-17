@@ -1,4 +1,26 @@
-
 <scroll-view class="page">
-
+    <view style="margin-bottom: 20rpx;">
+        <t-button t-class="scanQr" theme="light" bindtap="scanDeviceQr" slot="suffix" size="small" block>扫描设备二维码</t-button>
+    </view>
+    <view>
+        <t-input disabled="{{idInputEditAble}}" value="{{deviceId}}" label="设备Id" placeholder="请输入文字">
+            <t-button variant="outline" bindtap="checkDevice" slot="suffix" theme="primary" size="small"> 检测ID </t-button>
+        </t-input>
+        <view wx:if="{{deviceValid}}">
+            <t-input data-inputfield="deviceName" onchange="setInputData" value="{{deviceName}}" label="设备名称" placeholder="请输入文字"></t-input>
+            <t-input label="设备地址" placeholder="请输入文字" value="{{deviceLocation}}">
+                <view slot="suffix" style="display: flex; align-items: center">
+                    <t-icon style="padding-left: 4rpx;" name="location" size="40rpx" data-name="location" bindtap="moveToLocation" />
+                </view>
+            </t-input>
+            <t-cell class="mb-16" title="所属群组" arrow hover note="{{groupText}}" bind:click="onGroupPicker" />
+        </view>
+    </view>
+    <view style="width: 90%;margin: 0 auto;margin-top: 20px; ">
+        <t-button theme="primary" bindtap="addDevice" block>新增设备</t-button>
+    </view>
 </scroll-view>
+<t-picker visible="{{groupVisiable}}" value="{{groupValue}}" data-key="group" title="选择群组" cancelBtn="取消" confirmBtn="确认" bindchange="onPickerChange" bindpick="onColumnChange" bindcancel="onPickerCancel">
+    <t-picker-item options="{{groupArr}}" />
+</t-picker>
+<t-toast id="t-toast" />

@@ -1,3 +1,11 @@
 {
-    "usingComponents": {}
+  "usingComponents": {
+    "t-cell": "tdesign-miniprogram/cell/cell",
+    "t-input": "tdesign-miniprogram/input/input",
+    "t-button": "tdesign-miniprogram/button/button",
+    "t-toast": "tdesign-miniprogram/toast/toast",
+    "t-picker": "tdesign-miniprogram/picker/picker",
+    "t-picker-item": "tdesign-miniprogram/picker/picker-item",
+    "t-icon": "tdesign-miniprogram/icon/icon"
+  }
 }

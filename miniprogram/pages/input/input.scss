@@ -5,4 +5,14 @@
     height: max-content;
     min-height: 100vh;
     background: rgb(243, 243, 243);
+
+    .t-input__label,.t-input__wrap{
+        display: flex;
+        align-items: center;
+    }
+    .scanQr{
+        background-color: #2b5cab !important;
+        color: white !important;
+        width: 90% !important;
+    }
 }
