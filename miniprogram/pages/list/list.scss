@@ -1,0 +1,27 @@
+.page {
+  padding: 16rpx 0rpx;
+  padding-bottom: 118px;
+  box-sizing: border-box;
+  height: max-content;
+  min-height: 100vh;
+  background: rgb(220, 220, 220);
+  .itemView {
+    background-color: white;
+    padding: 16rpx 32rpx;
+    margin-bottom: 24rpx;
+    // border-radius: 6px;
+    .logTime {
+      font-size: 16px;
+      margin-bottom: 8rpx;
+    }
+    .logContent {
+      font-size: 16px;
+      color: #999;
+      margin-bottom: 8rpx;
+    }
+    .deviceId {
+      font-size: 13px;
+      margin-bottom: 8rpx;
+    }
+  }
+}

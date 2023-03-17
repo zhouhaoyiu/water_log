@@ -1,6 +1,11 @@
 <wxs module="_">
     module.exports.contains = function (arr, target) { return arr.indexOf(target) > -1; } 
 </wxs>
+<!-- <t-notice-bar visible="true" content="请确保输入正确">
+    <view slot="prefixIcon">
+        <t-icon name="error-circle-filled"></t-icon>
+    </view>
+</t-notice-bar> -->
 <scroll-view class="page">
     <t-cell title="供水人" hover note="太原供水集团有限公司" />
     <t-cell title="联系电话" hover note="0351-3094444" />
@@ -16,10 +21,14 @@
     <t-input align="right" disabled="{{!!status}}" size="small" value="{{lxdh}}" data-inputfield="lxdh" label="slot" onchange="setInputData" placeholder="请输入联系电话">
         <text slot="label">联系电话<text style="color: #e34d59"> *</text></text>
     </t-input>
-    <t-input align="right" disabled="{{!!status}}" size="small" value="{{sfzh}}" data-inputfield="sfzh" label="slot" onchange="setInputData" placeholder="请输入证件号">
+    <!-- <t-input align="right" disabled="{{!!status}}" size="small" value="{{sfzh}}" data-inputfield="sfzh" label="slot" onchange="setInputData" placeholder="请输入证件号">
         <text slot="label">证件号<text style="color: #e34d59"> *</text></text>
-    </t-input>
-    <t-cell title="状态" hover note="{{!!status?'已签订':'未签订'}}" />
+    </t-input> -->
+    <t-cell title="状态" hover>
+        <view slot="note" style="color: {{!!status?'green':'red'}}">
+            {{!!status?"已签订":"未签订"}}
+        </view>
+    </t-cell>
     <t-cell description="为了明确供水人和用水人的权利和义务，根据《中华人民共和国民法典》、《城市供水条例》及《太原市城市供水管理办法》等有关法律、法规和规章，经双方协商，订立本合同，以便共同遵守。" />
     <t-collapse value="{{activeValues}}" bind:change="handleChange">
         <t-collapse-panel header="第一条 用水地址和用水性质" header-right-content="{{_.contains(activeValues, 0) ? '收起' : '展开'}}" value="{{0}}" expandIcon>
@@ -226,8 +235,10 @@
     </view>
     <view wx:if="{{!status}}" style="margin-top:20rpx">
         <!-- <t-button>暂存</t-button> -->
-        <t-button block theme="primary" bindtap="submitJob">提交</t-button>
+        <t-button block theme="primary" bindtap="openDialog">提交</t-button>
+
     </view>
 </scroll-view>
 
 <t-toast id="t-toast" />
+<t-dialog visible="{{showConfirm}}" title="确认提交" content="请确保输入内容正确" confirm-btn="提交" cancel-btn="取消" bind:confirm="submitJob" bind:cancel="closeDialog" />

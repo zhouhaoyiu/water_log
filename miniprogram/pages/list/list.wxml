@@ -1,0 +1,11 @@
+<scroll-view class="page">
+    <view wx:for="{{Arr}}" wx:key="index" class="itemView">
+        <view style="color: red;" wx:if="{{item.new}}">新</view>
+        <view class="logTime">{{item.logTime}}</view>
+        <view class="logContent">
+            设备：{{item.deviceName}}发出消息，请尽快确认和处理
+        </view>
+        <t-divider></t-divider>
+        <view class="deviceId">IMEI：{{item.deviceId}}</view>
+    </view>
+</scroll-view>

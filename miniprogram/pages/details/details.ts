@@ -1,4 +1,4 @@
-// pages/test/test.ts
+// pages/details/details.ts
 Page({
 
     /**
@@ -12,9 +12,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad() {
-        this.getTabBar().setData({
-            selected: 1,
-        });
+
     },
 
     /**

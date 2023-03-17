@@ -6,6 +6,8 @@
         "t-collapse": "tdesign-miniprogram/collapse/collapse",
         "t-collapse-panel": "tdesign-miniprogram/collapse/collapse-panel",
         "t-toast": "tdesign-miniprogram/toast/toast",
-        "t-image": "tdesign-miniprogram/image/image"
+        "t-image": "tdesign-miniprogram/image/image",
+        "t-dialog": "tdesign-miniprogram/dialog/dialog",
+        "t-notice-bar": "tdesign-miniprogram/notice-bar/notice-bar"
     }
 }

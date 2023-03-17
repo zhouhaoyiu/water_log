@@ -1,6 +1,5 @@
 // @ts-nocheck
 import dayjs from "dayjs";
-import { nanoid } from "nanoid";
 import Toast, {
     ToastOptionsType,
     hideToast,
@@ -17,12 +16,13 @@ Page({
         ysrDrawShow: false,
         ysrSrc: null,
         ysrBase64: null,
+        showConfirm: false,
 
         jfh: "",
         mc: "",
         cbh: "",
         lxdh: "",
-        sfzh: "",
+        // sfzh: "",
         dz: "",
         infoId: "",
         searchOk: false
@@ -31,6 +31,16 @@ Page({
         this.setData({
             activeValues: e.detail.value,
         });
+    },
+    openDialog() {
+        this.setData({
+            showConfirm: true
+        })
+    },
+    closeDialog() {
+        this.setData({
+            showConfirm: false
+        })
     },
     reSearch() {
         this.setData({
@@ -43,7 +53,7 @@ Page({
             mc: "",
             cbh: "",
             lxdh: "",
-            sfzh: "",
+            // sfzh: "",
             dz: "",
             searchOk: false,
             infoId: "",
@@ -84,13 +94,13 @@ Page({
             });
             return;
         }
-        if (!this.data.sfzh) {
-            this.handleToast({
-                message: "请填写身份证号",
-                theme: "fail",
-            });
-            return;
-        }
+        // if (!this.data.sfzh) {
+        //     this.handleToast({
+        //         message: "请填写身份证号",
+        //         theme: "fail",
+        //     });
+        //     return;
+        // }
         if (!this.data.ysrBase64) {
             this.handleToast({
                 message: "请用水人签字",
@@ -104,7 +114,8 @@ Page({
             data: {
                 infoId: that.data.infoId,
                 lxdh: that.data.lxdh,
-                sfzh: that.data.sfzh,
+                // sfzh: that.data.sfzh,
+                sfzh: 123,
                 ysrBase64: that.data.ysrBase64,
                 status: 1
             },
@@ -118,13 +129,33 @@ Page({
                         method: "POST",
                         url: "http://localhost:8094/SignLog/insertSignLog",
                         data: {
-                            logUuid: nanoid(),
                             logTime: dayjs(`${new Date()}`).format('YYYY-MM-DD HH:mm:ss'),
                             logJfh: that.data.jfh,
                             logCbh: that.data.cbh,
-                            logSfzh: that.data.sfzh,
+                            // logSfzh: that.data.sfzh,
+                            logSfzh: 1324
                         }
                     })
+                    that.setData({
+                        activeValues: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                        ysrSignContext: undefined as unknown as WechatMiniprogram.CanvasContext,
+                        ysrSignCanvas: undefined as unknown as WechatMiniprogram.Canvas,
+                        ysrHasDraw: false,
+                        ysrDrawOk: false,
+                        ysrDrawShow: false,
+                        ysrSrc: null,
+                        ysrBase64: null,
+
+                        jfh: "",
+                        mc: "",
+                        cbh: "",
+                        lxdh: "",
+                        // sfzh: "",
+                        dz: "",
+                        infoId: "",
+                        searchOk: false
+                    })
+                    that.closeDialog()
                 }
                 else {
                     that.handleToast({
@@ -213,6 +244,7 @@ Page({
         this.toast({
             message: typeof message === "string" ? message : message.message,
             theme: typeof message === "string" ? theme : message.theme,
+            duration: typeof message === "string" ? theme : message.duration,
         });
     },
     openSign(e: { target: { dataset: { name: string } } }) {
@@ -309,7 +341,8 @@ Page({
         } else {
             this.handleToast({
                 message: `${chineseName}签字成功`,
-                theme: "success"
+                theme: "success",
+                duration: 2000
             });
         }
 

@@ -1,4 +1,0 @@
-<!--pages/test/test.wxml-->
-<view class="page">
-    <t-input></t-input>
-</view>

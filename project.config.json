@@ -26,7 +26,8 @@
         "ignoreDevUnusedFiles": false,
         "ignoreUploadUnusedFiles": false,
         "coverView": false,
-        "showShadowRootInWxmlPanel": false
+        "showShadowRootInWxmlPanel": false,
+        "condition": false
     },
     "simulatorType": "wechat",
     "simulatorPluginLibVersion": {},
