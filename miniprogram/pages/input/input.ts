@@ -92,12 +92,27 @@ Page({
         });
     },
 
+    scanDeviceQr() {
+        wx.scanCode({
+            success: (res) => {
+                console.log(res);
+                this.setData({
+                    deviceId: res.result
+                });
+                this.checkDevice();
+            },
+            fail: (err) => {
+                console.log(err);
+            }
+        })
+    },
+
     addDevice() {
         const sendData = {
-            deviceId:this.data.deviceId,
-            deviceName:this.data.deviceName,
-            deviceLocation:this.data.deviceLocation,
-            deviceGroupId:this.data.deviceGroupId
+            deviceId: this.data.deviceId,
+            deviceName: this.data.deviceName,
+            deviceLocation: this.data.deviceLocation,
+            deviceGroupId: this.data.deviceGroupId
         }
         wx.request({
             url: "http://localhost:7001/create_device",
