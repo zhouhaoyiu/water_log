@@ -3,7 +3,7 @@
         <t-button t-class="scanQr" theme="light" bindtap="scanDeviceQr" slot="suffix" size="small" block>扫描设备二维码</t-button>
     </view>
     <view>
-        <t-input disabled="{{idInputEditAble}}" value="{{deviceId}}" label="设备Id" placeholder="请输入文字">
+        <t-input disabled="{{idInputEditAble}}" data-inputfield="deviceId" onchange="setInputData" value="{{deviceId}}" label="设备ID" placeholder="请输入文字" >
             <t-button variant="outline" bindtap="checkDevice" slot="suffix" theme="primary" size="small"> 检测ID </t-button>
         </t-input>
         <view wx:if="{{deviceValid}}">
