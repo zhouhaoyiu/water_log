@@ -46,6 +46,19 @@ Page({
         })
     },
 
+    ackNew(item: any){
+        if(this.data.Arr[item.currentTarget.dataset.index].new === false) return;
+        // toast
+        wx.showToast({
+            title: '已确认',
+            icon: 'success',
+            duration: 1000
+        })
+        this.setData({
+            [`Arr[${item.currentTarget.dataset.index}].new`]: false
+        })       
+    },
+
     /**
      * 生命周期函数--监听页面初次渲染完成
      */

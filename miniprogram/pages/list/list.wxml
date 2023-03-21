@@ -1,5 +1,5 @@
 <scroll-view class="page">
-    <view wx:for="{{Arr}}" wx:key="index" class="itemView">
+    <view wx:for="{{Arr}}" wx:key="index" class="itemView" bindtap="ackNew" data-index="{{index}}">
         <view style="color: red;" wx:if="{{item.new}}">新</view>
         <view class="logTime">{{item.logTime}}</view>
         <view class="logContent">
