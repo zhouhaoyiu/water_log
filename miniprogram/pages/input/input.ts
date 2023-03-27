@@ -65,7 +65,7 @@ Page({
                     this.handleToast("请继续绑定", "success");
 
                 } else {
-                    this.handleToast("设备已绑定", "fail");
+                    this.handleToast("设备已绑定", "error");
                 }
             },
         });
@@ -114,6 +114,8 @@ Page({
             deviceLocation: this.data.deviceLocation,
             deviceGroupId: this.data.deviceGroupId
         }
+        console.log(123);
+        
         wx.request({
             url: "http://localhost:7001/create_device",
             method: "POST",
@@ -127,7 +129,7 @@ Page({
                         idInputEditAble: false
                     });
                 } else {
-                    this.handleToast("添加失败", "fail");
+                    this.handleToast("添加失败", "error");
                 }
             },
         })
@@ -182,7 +184,7 @@ Page({
      * 用户点击右上角分享
      */
     onShareAppMessage() { },
-    handleToast(message: string, theme: "loading" | "success" | "fail") {
+    handleToast(message: string, theme: "loading" | "success" | "error") {
         Toast({
             context: this,
             selector: "#t-toast",

@@ -24,7 +24,7 @@
         "postcss": true,
         "minified": true,
         "ignoreDevUnusedFiles": false,
-        "ignoreUploadUnusedFiles": false,
+        "ignoreUploadUnusedFiles": true,
         "coverView": false,
         "showShadowRootInWxmlPanel": false,
         "condition": false

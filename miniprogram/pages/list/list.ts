@@ -47,7 +47,7 @@ Page({
     },
 
     ackNew(item: any){
-        if(this.data.Arr[item.currentTarget.dataset.index].new === false) return;
+        if(!this.data.Arr[item.currentTarget.dataset.index].new) return;
         // toast
         wx.showToast({
             title: '已确认',

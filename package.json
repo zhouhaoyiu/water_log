@@ -9,7 +9,7 @@
     "dependencies": {
         "dayjs": "^1.11.6",
         "nanoid": "^4.0.0",
-        "tdesign-miniprogram": "^1.0.3"
+        "tdesign-miniprogram": "0.34.0"
     },
     "devDependencies": {
         "miniprogram-api-typings": "3.9.0"
