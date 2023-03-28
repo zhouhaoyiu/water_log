@@ -46,8 +46,11 @@ Page({
         })
     },
 
-    ackNew(item: any){
-        if(!this.data.Arr[item.currentTarget.dataset.index].new) return;
+    ackNew(item: any) {
+        wx.navigateTo({
+            url: `/pages/details/details?deviceid=${item.currentTarget.dataset.deviceid}`,
+        });
+        if (!this.data.Arr[item.currentTarget.dataset.index].new) return;
         // toast
         wx.showToast({
             title: '已确认',
@@ -56,7 +59,7 @@ Page({
         })
         this.setData({
             [`Arr[${item.currentTarget.dataset.index}].new`]: false
-        })       
+        })
     },
 
     /**

@@ -5,14 +5,17 @@ Page({
      * 页面的初始数据
      */
     data: {
-
+        deviceid: '',
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad() {
-
+    onLoad(options: any) {
+        console.log(options);
+        this.setData({
+            deviceid: options.deviceid
+        })
     },
 
     /**
