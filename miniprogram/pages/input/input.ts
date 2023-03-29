@@ -65,7 +65,7 @@ Page({
                     this.handleToast("请继续绑定", "success");
 
                 } else {
-                    this.handleToast("设备已绑定", "error");
+                    this.handleToast("设备已绑定", "fail");
                 }
             },
         });
@@ -129,7 +129,7 @@ Page({
                         idInputEditAble: false
                     });
                 } else {
-                    this.handleToast("添加失败", "error");
+                    this.handleToast("添加失败", "fail");
                 }
             },
         })
@@ -184,7 +184,7 @@ Page({
      * 用户点击右上角分享
      */
     onShareAppMessage() { },
-    handleToast(message: string, theme: "loading" | "success" | "error") {
+    handleToast(message: string, theme: "loading" | "success" | "fail") {
         Toast({
             context: this,
             selector: "#t-toast",

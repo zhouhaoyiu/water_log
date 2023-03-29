@@ -12,12 +12,12 @@ Page({
      */
     onLoad() {
         this.getTabBar().setData({
-            selected: 0
+            selected: 0,
         });
         // 建立websocket连接
         const socketTask = wx.connectSocket({
             url: "ws://localhost:7002",
-            success: function (res) {
+            success: function (_res) {
                 console.log("连接成功");
             },
             fail: (res) => {
@@ -25,41 +25,46 @@ Page({
             },
         });
         socketTask.onMessage((res) => {
-            let addData = JSON.parse(res.data as string)
-            addData.new = true
-            console.log(addData);
+            // let addData = JSON.parse(res.data as string)
+            // addData.new = true
+            // console.log(addData);
 
+            // this.setData({
+            //     Arr: [addData, ...this.data.Arr,],
+            // });
+
+            // TODO
+            let addData = JSON.parse(res.data as string);
+            console.log(addData.deviceId);
+            let deviceIndex = 0;
+            this.data.Arr.forEach((item: any, index: number) => {
+                if (item.deviceId === addData.deviceId) {
+                    deviceIndex = index;
+                }
+            });
             this.setData({
-                Arr: [addData, ...this.data.Arr,],
+                [`Arr[${deviceIndex}].new`]: true,
             });
         });
         wx.request({
-            url: "http://localhost:7001/get_water_logs",
-            method: 'GET',
-            success: _res => {
+            url: "http://localhost:7001/get_all_device",
+            method: "GET",
+            success: (_res) => {
                 console.log(_res);
                 this.setData({
-                    Arr: _res.data
-                })
-
-            }
-        })
+                    Arr: _res.data,
+                });
+            },
+        });
     },
 
     ackNew(item: any) {
         wx.navigateTo({
             url: `/pages/details/details?deviceid=${item.currentTarget.dataset.deviceid}`,
         });
-        if (!this.data.Arr[item.currentTarget.dataset.index].new) return;
-        // toast
-        wx.showToast({
-            title: '已确认',
-            icon: 'success',
-            duration: 1000
-        })
         this.setData({
-            [`Arr[${item.currentTarget.dataset.index}].new`]: false
-        })
+            [`Arr[${item.currentTarget.dataset.index}].new`]: false,
+        });
     },
 
     /**
