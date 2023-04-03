@@ -17,9 +17,7 @@ Page({
         // 建立websocket连接
         const socketTask = wx.connectSocket({
             url: "ws://localhost:7002",
-            success: function (_res) {
-                console.log("连接成功");
-            },
+            success: function (_res) { },
             fail: (res) => {
                 console.log(res, 123);
             },

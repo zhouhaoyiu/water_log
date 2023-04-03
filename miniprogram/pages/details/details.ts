@@ -40,13 +40,20 @@ Page({
                 this.data.deviceid,
             method: "GET",
             success: (_res: any) => {
+                console.log(43, _res);
+
                 if (!_res.data[0]) return;
                 this.setData({
                     deviceName: _res.data[0].deviceName,
                     deviceVoltage: _res.data[0].deviceVoltage || "无电压",
+                    deviceLocation: _res.data[0].deviceLocation
                 })
             },
         });
+    },
+
+    ackNew(e: any) {
+        console.log(e.currentTarget.dataset);
     },
 
     /**
