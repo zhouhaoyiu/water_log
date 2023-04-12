@@ -7,9 +7,9 @@
         <t-cell title="设备电压" note="{{deviceVoltage}}" hover />
     </t-cell-group>
     <view wx:for="{{infoArr}}" wx:key="index" style="margin-top: 10px;">
-        <t-cell-group theme="card" bindtap="ackNew" data-logid="{{item.logId}}">
-            <t-cell title="报警时间" note="{{item.logTime}}"></t-cell>
-            <t-cell title="是否已读" note="{{item.new}}"></t-cell>
+        <t-cell-group theme="card" bindtap="ackNew" data-logid="{{item.logId}}" data-new="{{item.new}}" data-index="{{index}}">
+            <t-cell hover title="报警时间" note="{{item.logTime}}"></t-cell>
+            <t-cell hover title="是否已读" note="{{item.new==='true'?'否':'是'}}"></t-cell>
         </t-cell-group>
     </view>
 </scroll-view>

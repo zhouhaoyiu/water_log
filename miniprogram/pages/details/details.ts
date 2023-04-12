@@ -40,8 +40,6 @@ Page({
                 this.data.deviceid,
             method: "GET",
             success: (_res: any) => {
-                console.log(43, _res);
-
                 if (!_res.data[0]) return;
                 this.setData({
                     deviceName: _res.data[0].deviceName,
@@ -54,6 +52,25 @@ Page({
 
     ackNew(e: any) {
         console.log(e.currentTarget.dataset);
+        const logid = e.currentTarget.dataset.logid
+        wx.request({
+            url: "http://localhost:7001/ack_water_log" +
+                "?logId=" +
+                logid,
+            success: _res => {
+                console.log(_res);
+                if(_res.data==="success"){
+                    wx.showToast({
+                        title: '已确认',
+                        icon: 'success',
+                        duration: 2000
+                    })
+                    this.setData({
+                        [`infoArr[${e.currentTarget.dataset.index}].new`]: false,
+                    });                    
+                }
+            }
+        })
     },
 
     /**

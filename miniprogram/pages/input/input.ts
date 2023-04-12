@@ -49,6 +49,9 @@ Page({
     },
 
     checkDevice() {
+        if (!this.data.deviceId) {
+            this.handleToast("请输入设备ID", "fail")
+        }
         wx.request({
             url: "http://localhost:7001/check_device",
             method: "GET",
@@ -115,7 +118,7 @@ Page({
             deviceGroupId: this.data.deviceGroupId
         }
         console.log(123);
-        
+
         wx.request({
             url: "http://localhost:7001/create_device",
             method: "POST",
