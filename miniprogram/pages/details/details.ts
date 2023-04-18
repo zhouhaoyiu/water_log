@@ -59,7 +59,7 @@ Page({
                 logid,
             success: _res => {
                 console.log(_res);
-                if(_res.data==="success"){
+                if (_res.data === "success") {
                     wx.showToast({
                         title: '已确认',
                         icon: 'success',
@@ -67,7 +67,7 @@ Page({
                     })
                     this.setData({
                         [`infoArr[${e.currentTarget.dataset.index}].new`]: false,
-                    });                    
+                    });
                 }
             }
         })
