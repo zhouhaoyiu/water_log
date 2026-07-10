@@ -1,0 +1,51 @@
+lockfileVersion: '9.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+importers:
+
+  .:
+    dependencies:
+      dayjs:
+        specifier: ^1.11.6
+        version: 1.11.21
+      nanoid:
+        specifier: ^5.0.9
+        version: 5.1.16
+      tdesign-miniprogram:
+        specifier: 0.34.0
+        version: 0.34.0
+    devDependencies:
+      miniprogram-api-typings:
+        specifier: 3.9.1
+        version: 3.9.1
+
+packages:
+
+  dayjs@1.11.21:
+    resolution: {integrity: sha512-98IT+HOahAisibz/yjKbzuOBwYcjJ7BCLPzARyHiyEBmRz4fatF+KPJszEHXsGYjUG234aH/cOjW1wwTbKUZlA==}
+
+  miniprogram-api-typings@3.9.1:
+    resolution: {integrity: sha512-oyratzOWyuFhBzONp06l0FBPu03ltCd1sRWoy2v38SnAKxtpZ8ySLTSEw//hIsBdocMda7fFZEjOG57L57mcUw==}
+
+  nanoid@5.1.16:
+    resolution: {integrity: sha512-kVrnsrJqMR8+oLJnGEmSWw9BivK5mt7H3FZatVRjrc5wGqFYuBxX1yG7+A7Gi5AefkX6t/oCkizcQgpu0cY1dQ==}
+    engines: {node: ^18 || >=20}
+    hasBin: true
+
+  tdesign-miniprogram@0.34.0:
+    resolution: {integrity: sha512-2TWwqVQ4hneOGxUAjO3XeKiAedae/6ofzdDFgS5bn2gQxnAY2rWU+MSBv/5ebecmMnewU7iwrlwZA9a7QJxNiw==}
+
+snapshots:
+
+  dayjs@1.11.21: {}
+
+  miniprogram-api-typings@3.9.1: {}
+
+  nanoid@5.1.16: {}
+
+  tdesign-miniprogram@0.34.0:
+    dependencies:
+      dayjs: 1.11.21
