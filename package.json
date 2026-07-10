@@ -8,7 +8,7 @@
     "license": "",
     "dependencies": {
         "dayjs": "^1.11.6",
-        "nanoid": "^4.0.0",
+        "nanoid": "^5.0.9",
         "tdesign-miniprogram": "0.34.0"
     },
     "devDependencies": {
