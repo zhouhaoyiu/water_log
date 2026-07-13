@@ -2,17 +2,22 @@
   "name": "tsht",
   "version": "1.0.0",
   "description": "",
-  "scripts": {},
+  "scripts": {
+    "lint": "oxlint --deny typescript/no-explicit-any miniprogram typings/index.d.ts typings/tdesign.d.ts",
+    "type-check": "tsc --noEmit"
+  },
   "keywords": [],
   "author": "",
   "license": "",
   "dependencies": {
     "dayjs": "^1.11.6",
     "nanoid": "^5.0.9",
-    "tdesign-miniprogram": "0.34.0"
+    "tdesign-miniprogram": "1.15.3"
   },
   "devDependencies": {
-    "miniprogram-api-typings": "3.9.1"
+    "miniprogram-api-typings": "5.2.1",
+    "oxlint": "1.73.0",
+    "typescript": "7.0.2"
   },
   "packageManager": "pnpm@11.9.0"
 }

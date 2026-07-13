@@ -9,13 +9,13 @@ Page({
         deviceVoltage: "",
         deviceLocation: "",
 
-        infoArr: [] as any
+        infoArr: [] as WaterLogEntry[]
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad(options: any) {
+    onLoad(options: Record<string, string>) {
         console.log(options);
         this.setData({
             deviceid: options.deviceid,
@@ -26,7 +26,7 @@ Page({
                 "?deviceid=" +
                 this.data.deviceid,
             method: "GET",
-            success: (_res) => {
+            success: (_res: { data: WaterLogEntry[] }) => {
                 console.log(_res);
                 this.setData({
                     infoArr: _res.data
@@ -39,7 +39,7 @@ Page({
                 "?deviceid=" +
                 this.data.deviceid,
             method: "GET",
-            success: (_res: any) => {
+            success: (_res: { data: DeviceInfo[] }) => {
                 if (!_res.data[0]) return;
                 this.setData({
                     deviceName: _res.data[0].deviceName,
@@ -50,7 +50,7 @@ Page({
         });
     },
 
-    ackNew(e: any) {
+    ackNew(e: MiniEvent<Record<string, never>, { logid: string; index: number }>) {
         console.log(e.currentTarget.dataset);
         const logid = e.currentTarget.dataset.logid
         wx.request({

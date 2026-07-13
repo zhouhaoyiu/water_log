@@ -60,7 +60,7 @@ Page({
             status: 0
         })
     },
-    setInputData(e: any) {
+    setInputData(e: unknown) {
         this.setData({
             [e.target.dataset.inputfield]: e.detail.value,
         });
@@ -276,7 +276,7 @@ Page({
         });
     },
     touchstart(e: {
-        touches: { x: any; y: any }[];
+        touches: { x: unknown; y: unknown }[];
         target: { dataset: { name: string } };
     }) {
         const name = e.target.dataset.name;

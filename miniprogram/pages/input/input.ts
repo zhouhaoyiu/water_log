@@ -12,7 +12,7 @@ Page({
         deviceGroupId: "",
         deviceValid: false,
 
-        groupArr: [] as any,
+        groupArr: [] as Array<{ label: string; value: string }>,
         groupText: "",
         groupValue: [],
         groupVisiable: false,
@@ -30,9 +30,9 @@ Page({
         wx.request({
             url: "http://localhost:7001/get_all_group",
             method: "GET",
-            success: (_res: { data: Array<any> }) => {
+            success: (_res: { data: DeviceGroup[] }) => {
                 console.log(_res);
-                const groupArr = _res.data.map((item: any) => {
+                const groupArr = _res.data.map((item) => {
                     return {
                         label: item.groupName,
                         value: item.groupId,
@@ -73,7 +73,7 @@ Page({
             },
         });
     },
-    setInputData(e: any) {
+    setInputData(e: MiniEvent<{ value: string }, { inputfield: string }>) {
         this.setData({
             [e.target.dataset.inputfield]: e.detail.value
         });
@@ -83,7 +83,7 @@ Page({
             groupVisiable: true,
         })
     },
-    onPickerChange(e: { currentTarget: { dataset: { key: any; }; }; detail: { value: any; label: any }; }) {
+    onPickerChange(e: MiniEvent<{ value: string[]; label: string[] }, { key: string }>) {
         const { key } = e.currentTarget.dataset;
         const { value, label } = e.detail;
 

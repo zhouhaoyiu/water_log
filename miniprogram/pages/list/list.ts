@@ -4,7 +4,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-        Arr: [] as any,
+        Arr: [] as DeviceInfo[],
     },
 
     /**
@@ -32,10 +32,10 @@ Page({
             // });
 
             // TODO
-            let addData = JSON.parse(res.data as string);
+            let addData = JSON.parse(res.data as string) as DeviceInfo;
             console.log(addData.deviceId);
             let deviceIndex = 0;
-            this.data.Arr.forEach((item: any, index: number) => {
+            this.data.Arr.forEach((item, index) => {
                 if (item.deviceId === addData.deviceId) {
                     deviceIndex = index;
                 }
@@ -47,7 +47,7 @@ Page({
         wx.request({
             url: "http://localhost:7001/get_all_device",
             method: "GET",
-            success: (_res) => {
+            success: (_res: { data: DeviceInfo[] }) => {
                 console.log(_res);
                 this.setData({
                     Arr: _res.data,
@@ -56,7 +56,7 @@ Page({
         });
     },
 
-    ackNew(item: any) {
+    ackNew(item: MiniEvent<Record<string, never>, { deviceid: string; index: number }>) {
         wx.navigateTo({
             url: `/pages/details/details?deviceid=${item.currentTarget.dataset.deviceid}`,
         });
